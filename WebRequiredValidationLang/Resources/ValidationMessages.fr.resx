@@ -117,10 +117,46 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Required" xml:space="preserve">
-    <value>Le champ {0} est obligatoire.</value>
+ <data name="CompareAttribute" xml:space="preserve">
+    <value>Les champs '{0}' et '{1}' ne sont pas identiques.</value>
+  </data>
+  <data name="CreditCardAttribute" xml:space="preserve">
+    <value>Le champ {0} est un numéro de carte de crédit invalide.</value>
+  </data>
+  <data name="EmailAddressAttribute" xml:space="preserve">
+    <value>Le champ {0} est une adresse courriel invalide.</value>
+  </data>
+  <data name="FileExtensionsAttribute" xml:space="preserve">
+    <value>Le champ {0} n'accepte que les types de fichiers suivants : {1}</value>
+  </data>
+  <data name="MaxLengthAttribute" xml:space="preserve">
+    <value>Le champ {0} doit avoir une longueur maximum de '{1}'.</value>
+  </data>
+  <data name="MinLengthAttribute" xml:space="preserve">
+    <value>Le champ {0} doit avoir une longueur minimum de '{1}'.</value>
+  </data>
+  <data name="NumberAttribute" xml:space="preserve">
+    <value>The champ {0} doit être un nombre.</value>
+  </data>
+  <data name="PhoneAttribute" xml:space="preserve">
+    <value>Le champ {0} est un numéro de téléphone invalide.</value>
+  </data>
+  <data name="RangeAttribute" xml:space="preserve">
+    <value>Le champ {0} doit être entre {1} et {2}.</value>
+  </data>
+  <data name="RegularExpressionAttribute" xml:space="preserve">
+    <value>Le champ {0} doit correspondre à l'expression régulière '{1}'.</value>
   </data>
   <data name="RequiredAttribute" xml:space="preserve">
-    <value>Le champ {0} est obligatoire.</value>
+    <value>Le champ {0} est requis.</value>
+  </data>
+  <data name="StringLengthAttribute" xml:space="preserve">
+    <value>Le champ {0} doit être composé d'un maximum de {1} caractères.</value>
+  </data>
+  <data name="StringLengthAttribute_ErrorMessageIncludingMinimum" xml:space="preserve">
+    <value>Le champ {0} doit être entre {2} et {1} caractères.</value>
+  </data>
+  <data name="UrlAttribute" xml:space="preserve">
+    <value>Le champ {0} n'est pas une URL pleinement qualifiée valide, commençant par HTTP, HTTP ou FTP.</value>
   </data>
 </root>
