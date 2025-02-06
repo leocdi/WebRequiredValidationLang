@@ -11,7 +11,8 @@ namespace WebRequiredValidationLang
         {
         }
 
-        public void CreateValidationMetadata(ValidationMetadataProviderContext context)
+        [Obsolete]
+        public void CreateValidationMetadataOld(ValidationMetadataProviderContext context)
         {
             if (context.Key.ModelType.GetTypeInfo().IsValueType && Nullable.GetUnderlyingType(context.Key.ModelType.GetTypeInfo()) == null && context.ValidationMetadata.ValidatorMetadata.Where(m => m.GetType() == typeof(RequiredAttribute)).Count() == 0)
                 context.ValidationMetadata.ValidatorMetadata.Add(new RequiredAttribute());
@@ -27,6 +28,36 @@ namespace WebRequiredValidationLang
                         tAttr.ErrorMessageResourceType = typeof(Resources.ValidationMessages);
                         tAttr.ErrorMessageResourceName = name;
                         tAttr.ErrorMessage = null;
+                    }
+                }
+            }
+        }
+
+        public void CreateValidationMetadata(ValidationMetadataProviderContext context)
+        {
+            var modelTypeInfo = context.Key.ModelType.GetTypeInfo();
+            var validatorMetadata = context.ValidationMetadata.ValidatorMetadata;
+
+            // Ajouter RequiredAttribute si le type est une valeur non nullable et n'a pas déjà un RequiredAttribute
+            if (modelTypeInfo.IsValueType && Nullable.GetUnderlyingType(modelTypeInfo) == null &&
+                !validatorMetadata.Any(m => m is RequiredAttribute))
+            {
+                validatorMetadata.Add(new RequiredAttribute());
+            }
+
+            // Vérifier et mettre à jour les messages d'erreur des ValidationAttributes
+            foreach (var attribute in validatorMetadata.OfType<ValidationAttribute>())
+            {
+                Debug.WriteLine(attribute.GetType());
+
+                if (attribute.ErrorMessage == null && attribute.ErrorMessageResourceName == null)
+                {
+                    string name = attribute.GetType().Name;
+                    if (Resources.ValidationMessages.ResourceManager.GetString(name) != null)
+                    {
+                        attribute.ErrorMessageResourceType = typeof(Resources.ValidationMessages);
+                        attribute.ErrorMessageResourceName = name;
+                        attribute.ErrorMessage = null; // Facultatif mais explicite
                     }
                 }
             }
