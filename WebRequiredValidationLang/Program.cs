@@ -1,6 +1,6 @@
 using Microsoft.Extensions.Localization;
+using ValidationTraductionCore;
 using WebRequiredValidationLang;
-using WebRequiredValidationLang.Resources;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,7 +13,7 @@ var builder = WebApplication.CreateBuilder(args);
 // ######## au passage sur le fichier ressource, bien penser a spécifier PublicResXFileCodeGenerator comme outil de génération et s'assurer que la ressource est publique
 builder.Services.AddLocalization();
 builder.Services.AddControllersWithViews(o => o.ModelMetadataDetailsProviders.Add(new LocalizedValidationMetadataProvider()))
-    //.AddDataAnnotationsLocalization(o => o.DataAnnotationLocalizerProvider = (Type,factory)=> new StringLocalizer<ValidationMessages>(factory)); j'ai fait ça dans un autre projet, je ne sais pas pourquoi ?
+    //.AddDataAnnotationsLocalization(o => o.DataAnnotationLocalizerProvider = (Type,factory)=> new StringLocalizer<ValidationMessages>(factory));
     .AddDataAnnotationsLocalization();
 
 var app = builder.Build();

@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35707.178 d17.12
+VisualStudioVersion = 17.12.35707.178
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebRequiredValidationLang", "WebRequiredValidationLang\WebRequiredValidationLang.csproj", "{9023948E-76FF-43CF-8AA3-1338555CA8E3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValidationTraductionCore", "ValidationTraductionCore\ValidationTraductionCore.csproj", "{03B738A7-3F99-4D34-8639-F8E82541B863}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp", "ConsoleApp\ConsoleApp.csproj", "{B9850219-59F1-4379-870F-C03831A5772B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{9023948E-76FF-43CF-8AA3-1338555CA8E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9023948E-76FF-43CF-8AA3-1338555CA8E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9023948E-76FF-43CF-8AA3-1338555CA8E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03B738A7-3F99-4D34-8639-F8E82541B863}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03B738A7-3F99-4D34-8639-F8E82541B863}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03B738A7-3F99-4D34-8639-F8E82541B863}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03B738A7-3F99-4D34-8639-F8E82541B863}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9850219-59F1-4379-870F-C03831A5772B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9850219-59F1-4379-870F-C03831A5772B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9850219-59F1-4379-870F-C03831A5772B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9850219-59F1-4379-870F-C03831A5772B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

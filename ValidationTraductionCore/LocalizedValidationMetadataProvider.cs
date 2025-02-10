@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
 using System.Reflection;
 
-namespace WebRequiredValidationLang
+namespace ValidationTraductionCore
 {
     public class LocalizedValidationMetadataProvider : IValidationMetadataProvider
     {
@@ -23,9 +23,8 @@ namespace WebRequiredValidationLang
                 if (tAttr?.ErrorMessage == null && tAttr?.ErrorMessageResourceName == null && tAttr != null)
                 {
                     var name = tAttr.GetType().Name;
-                    if (Resources.ValidationMessages.ResourceManager.GetString(name) != null)
-                    {
-                        tAttr.ErrorMessageResourceType = typeof(Resources.ValidationMessages);
+                    if (ValidationMessages.ResourceManager.GetString(name) != null){
+                        tAttr.ErrorMessageResourceType = typeof(ValidationMessages);
                         tAttr.ErrorMessageResourceName = name;
                         tAttr.ErrorMessage = null;
                     }
@@ -35,6 +34,7 @@ namespace WebRequiredValidationLang
 
         public void CreateValidationMetadata(ValidationMetadataProviderContext context)
         {
+            Console.WriteLine($"🌍 LocalizedValidationMetadataProvider -> CreateValidationMetadata pour {context.Key.ModelType.Name}");
             var modelTypeInfo = context.Key.ModelType.GetTypeInfo();
             var validatorMetadata = context.ValidationMetadata.ValidatorMetadata;
 
@@ -53,9 +53,9 @@ namespace WebRequiredValidationLang
                 if (attribute.ErrorMessage == null && attribute.ErrorMessageResourceName == null)
                 {
                     string name = attribute.GetType().Name;
-                    if (Resources.ValidationMessages.ResourceManager.GetString(name) != null)
+                    if (ValidationMessages.ResourceManager.GetString(name) != null)
                     {
-                        attribute.ErrorMessageResourceType = typeof(Resources.ValidationMessages);
+                        attribute.ErrorMessageResourceType = typeof(ValidationMessages);
                         attribute.ErrorMessageResourceName = name;
                         attribute.ErrorMessage = null; // Facultatif mais explicite
                     }
