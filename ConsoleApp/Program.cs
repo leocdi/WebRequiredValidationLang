@@ -13,10 +13,13 @@ using Microsoft.AspNetCore.Mvc.ModelBinding.Metadata;
 using System.ComponentModel;
 using ValidationTraductionCore;
 using System.Diagnostics.CodeAnalysis;
+using ConsoleApp;
 
 Console.WriteLine("Hello, World!");
 
 var serviceProvider = new ServiceCollection()
+    .AddSingleton<IMyApp, MyApp>()
+    //.AddSingleton<IMyApp, MyAppAsync>() 
     .AddSingleton<IValidationMetadataProvider, LocalizedValidationMetadataProvider>() // Fournisseur personnalisé
     .AddSingleton<ICompositeMetadataDetailsProvider, CustomCompositeMetadataDetailsProvider>(sp =>
         new CustomCompositeMetadataDetailsProvider(
@@ -45,6 +48,18 @@ foreach (var provider in serviceProvider.GetServices<IValidationMetadataProvider
 
 var testObject = new TestClass();
 ValidateModel(validator, metadataProvider,testObject);
+
+try
+{
+    var myApp = serviceProvider.GetRequiredService<IMyApp>();
+    await myApp.Run();
+}
+catch (Exception e)
+{
+    Console.WriteLine(e);
+}
+
+Console.WriteLine($"################# DONE");
 
 static void ValidateModel(IObjectModelValidator validator, IModelMetadataProvider metadataProvider, object model)
 {
